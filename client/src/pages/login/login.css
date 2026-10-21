@@ -1,0 +1,96 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    max-width: 450px;
+    margin: 4rem auto;
+    
+    /* Ugyanaz a gyönyörű üveghatású háttér, mint a post-itek alatt */
+    background: rgba(245, 243, 238, 0.90);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e0e0e0;
+  }
+  
+  .loginTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-family: 'Inter', sans-serif;
+    color: #111;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+  
+  .loginForm label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #666;
+    text-transform: uppercase;
+  }
+  
+  .loginInput {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 0.8rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  
+  .loginInput:focus {
+    border-color: #8a7300;
+  }
+  
+  .loginButton {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s ease;
+  }
+  
+  .loginButton:hover {
+    background: #8a7300;
+  }
+  
+  .loginRegisterButton {
+    background: transparent;
+    border: 1px solid #e0e0e0;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.8rem;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .loginRegisterButton a {
+    color: #111;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  
+  .loginRegisterButton:hover {
+    background: #e0e0e0;
+  }

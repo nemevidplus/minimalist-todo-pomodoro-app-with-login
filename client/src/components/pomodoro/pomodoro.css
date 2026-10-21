@@ -1,0 +1,28 @@
+
+
+.btn-mini {}
+
+.pomodoro-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin: 10px 0;
+   
+  
+  }
+  
+  .pomodoro-icon {
+    font-size: 1.2rem;
+  }
+  
+  .timer-display {
+    font-family: monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  

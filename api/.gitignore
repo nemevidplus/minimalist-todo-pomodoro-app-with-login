@@ -1,0 +1,15 @@
+# Node függőségek
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Környezeti változók és titkos kulcsok (adatbázis jelszavak, JWT kulcsok)
+.env
+.env.local
+.env.development
+.env.production
+
+# Operációs rendszer által generált fájlok
+.DS_Store
+Thumbs.db

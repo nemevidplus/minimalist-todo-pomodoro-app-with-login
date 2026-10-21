@@ -1,0 +1,35 @@
+OK 1. beállítani kisebb képernyőn működjenek a méretek logo és nav item is
+
+OK 2.main content is normálisan nézzen ki grid?
+    A.title-desc még állítgatni paddinget stb
+    B.button borderek
+    
+OK 3.új feladat sárga button
+OK 4. feladatok lap alján csoportosítva
+5.login wendev videó youtube, receptes appomon csekkolni?
+6.ténylgese login beállítása? lehet h haladjunk alapon most nem, majd visszatérünk rá
+7.responsive mindehol
+OK 8.beletenni egy pomodorot!
+OK 9. rögzítve legyen az input sor
+
+10. github 
+11. aws?
+12. netre mehet
+13. magamnak mehet a PORTFÓLIÓ mappába jegyzeteimbe remarkable re stb
+
+14. mobil méretben a digitális tér sublogo-t áthelyzni!
+
+___________________________________________________________
+okt 21 LOGIN/REGISTRATION
+BACKEND
+
+1. user model
+2.routes
+3.context mappa & localStorage
+4.index.js
+
+FRONTEND
+1.login +
+2.register onSubmit/ axios
+3.app.js routes Browser izék
+4.Settings
