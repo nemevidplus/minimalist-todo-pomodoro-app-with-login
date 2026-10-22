@@ -23,7 +23,7 @@ const Home = () => {
     const getItems = async()=> {
       try {
         // const response = await axios.get('/items');
-        const response = await axios.get('https://minimalist-todo-pomodoro-app-backend.onrender.com/items');
+        const response = await axios.get('https://minimalist-todo-pomodoro-app-backend.onrender.com/api/items');
 
         setItems(response.data);
       }catch (error) {
@@ -77,7 +77,7 @@ const Home = () => {
 
     try{  
       // const response= await axios.post('/newitem', newItem);
-      const response = await axios.post('https://minimalist-todo-pomodoro-app-backend.onrender.com/newitem', newItem);
+      const response = await axios.post('https://minimalist-todo-pomodoro-app-backend.onrender.com/api/items/newitem', newItem);
       console.log(response.data)
       setItem({title: "", description: ""})
       setItems(prevItems => [...prevItems, response.data])
@@ -89,7 +89,7 @@ const Home = () => {
   async function deleteItem(id) {
     try {
       // const response = await axios.delete('/delete/' + id);
-      const response = await axios.delete('https://minimalist-todo-pomodoro-app-backend.onrender.com/delete/' + id);
+      const response = await axios.delete('https://minimalist-todo-pomodoro-app-backend.onrender.com/api/items/delete/' + id);
       console.log(response.data);
       setItems(prevItems => prevItems.filter(i=> id !== i._id))
     }catch (error) {
@@ -109,7 +109,7 @@ const Home = () => {
   async function updateItem(id) {
     try {
       // const response = await axios.put('/update/' 
-        const response = await axios.put('https://minimalist-todo-pomodoro-app-backend.onrender.com/update/'
+        const response = await axios.put('https://minimalist-todo-pomodoro-app-backend.onrender.com/api/items/update/'
         + id, {
         title: updatedItem.title,
         description: updatedItem.description

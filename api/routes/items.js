@@ -5,7 +5,7 @@ const User = require("../models/User")
 
 
     //read
-    router.get('/items', async (req,res)=> {
+    router.get('/', async (req,res)=> {
         try{
             const items= await Item.find();
             res.json(items);

@@ -21,6 +21,7 @@ export default function Register({ onSwitchToLogin }) {
       });
       // Siker esetén átválthatunk a loginra vagy beállíthatjuk a state-et
       res.data && alert("Sikeres regisztráció! Kérlek, jelentkezz be.");
+      window.location.replace("/");
     } catch(err) {
       setError(true);
     }
