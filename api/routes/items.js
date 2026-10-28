@@ -7,8 +7,13 @@ const User = require("../models/User")
     //read
     router.get('/', async (req,res)=> {
         try{
-            const items= await Item.find();
-            res.json(items);
+            const userId = req.query.userId;
+
+            if (!userId) {
+                return res.status(200).json([]);
+            }
+            const userItems= await Item.find({userId: userId}).sort({createdAt: -1});
+            res.json(userItems);
         } catch(error){
             res.status(400).json('error:' + error)
         }
@@ -21,7 +26,7 @@ const User = require("../models/User")
                 title: req.body.title, 
                 description: req.body.description, 
                 completed: req.body.completed || false,
-                username: req.body.username
+                userId: req.body.userId,
             })
             const savedItem= await newItem.save();
             res.json(savedItem)
@@ -36,14 +41,15 @@ const User = require("../models/User")
         try{
             const id= req.params.id;
             const item = await Item.findById(id);
-            if(item.username ===req.body.username) {
-            const deletedItem = await Item.findByIdAndDelete(id);
-             
-            if(!deletedItem) {
-                return res.status(404).json("Item is not found")
+            if (!item) {
+                return res.status(404).json("Item is not found");
             }
-            res.json(deletedItem);
 
+            const userId = req.body.userId || req.query.userId;
+
+            if(item.userId === userId) {
+            const deletedItem = await Item.findByIdAndDelete(id);
+            res.status(200).json("succesfully deleted")
         } else {
             res.status(401).json("you can only update your todo")
         }
@@ -59,7 +65,9 @@ const User = require("../models/User")
         if (!item) {
             return res.status(404).json("Item is not found");
         }
-        if(item.username ===req.body.username) { 
+
+        const userId = req.body.userId || req.query.userId;
+        if(item.userId === userId) { 
 
         try{
             const id= req.params.id;

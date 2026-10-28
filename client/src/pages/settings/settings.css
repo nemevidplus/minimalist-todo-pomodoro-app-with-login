@@ -1,0 +1,100 @@
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    max-width: 450px;
+    width: 100%;
+    margin: 2rem auto;
+    
+   
+    background: rgba(245, 243, 238, 0.90);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e0e0e0;
+  }
+  
+  .settingsWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .settingsTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .settingsUpdateTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: #111;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  
+  .settingsDeleteTitle {
+    color: #d9534f;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+  }
+  
+  .settingsDeleteTitle:hover {
+    color: #a94442;
+  }
+  
+  .settingsForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+  
+  .settingsForm label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #666;
+    text-transform: uppercase;
+  }
+  
+  .settingsForm input {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 0.8rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  
+  .settingsForm input:focus {
+    border-color: #8a7300;
+  }
+  
+  .settingsSubmitButton {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s ease;
+  }
+  
+  .settingsSubmitButton:hover {
+    background: #8a7300;
+  }

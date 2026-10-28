@@ -7,7 +7,7 @@
     max-width: 450px;
     margin: 4rem auto;
     
-    /* Ugyanaz a gyönyörű üveghatású háttér, mint a post-itek alatt */
+    
     background: rgba(245, 243, 238, 0.90);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);

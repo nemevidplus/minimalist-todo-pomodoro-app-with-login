@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./home.css"
 import { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar/Navbar';
@@ -6,8 +6,28 @@ import PomodoroTimer from './../../components/pomodoro/PomodoroTimer';
 import axios from 'axios';
 import Login from '../login/Login';
 import Register from '../register/Register';
+import Settings from '../settings/Settings';
+import { Context } from '../../context/Context';
+
+const publicItems = [
+  {
+    _id:'public-1',
+    title: 'Üdv a kötelező to-do appomban 🎉',
+    description: ' regisztráció után, saját feladataidat listázhatod ide',
+    completed: false,
+  },
+  {
+    _id:'public-2',
+    title: 'Próbáld kia pomodoro időzítőt is',
+    description: ' kattints bármelyik kártyára alul',
+    completed: false,
+  }
+]
+
 
 const Home = () => {
+
+  const { user, dispatch } = useContext(Context);
 
   const [item, setItem] = useState({});
   const [items, setItems] = useState([]);
@@ -19,19 +39,25 @@ const Home = () => {
 
 
 
+
   useEffect(() => {
     const getItems = async()=> {
       try {
         // const response = await axios.get('/items');
-        const response = await axios.get('https://minimalist-todo-pomodoro-app-backend.onrender.com/api/items');
+
+        if (user && user._id) {
+        const response = await axios.get(`https://minimalist-todo-pomodoro-app-backend.onrender.com/api/items?userId=${user._id}`);
 
         setItems(response.data);
+      } else {
+        setItems(publicItems);
+      }
       }catch (error) {
         console.error(error);
       }
-    }
+    };
     getItems();
-  }, [])
+  }, [user]);
 
   function staggerText(text) {
     return (
@@ -69,10 +95,18 @@ const Home = () => {
 
   async function addItem(event) {
     event.preventDefault();
+
+    if (!user) {
+      alert("A saját teendők mentéséhez kérlek jelentkezz be!");
+      setauthMode('login');
+      return;
+    }
+
     const newItem = {
       title: item.title,
       description: item.description, 
-      completed: false
+      completed: false,
+      userId: user._id
     };
 
     try{  
@@ -112,7 +146,8 @@ const Home = () => {
         const response = await axios.put('https://minimalist-todo-pomodoro-app-backend.onrender.com/api/items/update/'
         + id, {
         title: updatedItem.title,
-        description: updatedItem.description
+        description: updatedItem.description,
+        userId: user._id
       })
       console.log(response.data);
       setItems(prevItems=> prevItems.map(item=> item._id === id? response.data : item));
@@ -136,7 +171,8 @@ async function toggleComplete(id, currentStatus) {
     // const response = await axios.put('/update/' 
     const response = await axios.put('https://minimalist-todo-pomodoro-app-backend.onrender.com/update/'
       + id, {
-      completed: !currentStatus
+      completed: !currentStatus,
+      userId: user._id
     });
     console.log(response.data);
     setItems(prevItems =>
@@ -152,6 +188,10 @@ const filteredItems = items.filter((i) => {
   if (selectedTab === "COMPLETED") return Boolean(i.completed) ;
   return true;
 } );
+
+const handleLogout =() => {
+  dispatch ({type: "LOGOUT"});
+};
 
 
   return (
@@ -175,8 +215,21 @@ const filteredItems = items.filter((i) => {
   className={`nav-item ${selectedTab === 'COMPLETED' ? 'selected-filter' : ''}`}
   onClick={() => setSelectedTab('COMPLETED')}
   >{staggerText('KÉSZ')} <span className="count">{items.filter( i=> i.completed ===true).length}</span></div>
+
+
+  { user ? ( <>
+    <div className="nav-item" onClick={() => setauthMode('settings')}>FELHASZNÁLÓ </div>
+  <div className="nav-item" onClick= {handleLogout}>KIJELENTKEZÉS</div>
+   </>
+   ) : ( 
+    <>
    <div className="nav-item" onClick={() => setauthMode('login')}>BEJELENTKEZÉS </div>
    <div className="nav-item" onClick={() => setauthMode('register')}>REGISZTRÁCIÓ </div>
+  
+
+   </>
+  )
+  }
   </div>
  
   </nav>
@@ -237,8 +290,15 @@ const filteredItems = items.filter((i) => {
   ) : authMode === 'register' ? (
     <div style={{ display: 'flex', justifyContent: 'center', padding: '3rem 0' }}>
       <Register /> 
-    </div>
-  ) : (
+    </div> 
+  ) 
+   : authMode === 'settings' ? (
+    <div style={{ display: 'flex', justifyContent: 'center', padding: '3rem 0' }}>
+      <Settings /> 
+    </div> 
+  ) 
+  
+  : (
     <div className="todo-grid">
     {filteredItems.map(item=> {
       return(

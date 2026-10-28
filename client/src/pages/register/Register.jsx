@@ -2,7 +2,7 @@ import "./register.css"
 import { useState } from "react"
 import axios from "axios"
 
-export default function Register({ onSwitchToLogin }) {
+export default function Register() {
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ export default function Register({ onSwitchToLogin }) {
         email,
         password
       });
-      // Siker esetén átválthatunk a loginra vagy beállíthatjuk a state-et
+      
       res.data && alert("Sikeres regisztráció! Kérlek, jelentkezz be.");
       window.location.replace("/");
     } catch(err) {

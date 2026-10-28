@@ -17,7 +17,8 @@ export const Reducer = (state, action) => {
                 user:null,
                 isFetching:false,
                 error:true,
-            };      case "UPDATE_START":
+            };      
+            case "UPDATE_START":
             return {
               ...state,
               isFetching:true
